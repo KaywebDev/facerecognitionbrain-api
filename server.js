@@ -10,10 +10,8 @@ const { handleImage, handleApiCall } = require('./controllers/Image');
 const db = knex({
     client: 'pg',
     connection: {
-        host: '127.0.0.1',
-        user: 'postgres',
-        password: 'Facerecognition',
-        database: 'smart-brain'
+        connectionString: process.env.DATABASE_URL,
+        ssl: true
     }
 });
 
