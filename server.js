@@ -7,11 +7,15 @@ const { handleSignin } = require('./controllers/Signin');
 const { handleProfileGet } = require('./controllers/Profile');
 const { handleImage, handleApiCall } = require('./controllers/Image');
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+
 const db = knex({
     client: 'pg',
     connection: {
         connectionString: process.env.DATABASE_URL,
-        ssl: true
+        ssl: {
+    rejectUnauthorized: false
+  }
     }
 });
 
